@@ -25,19 +25,21 @@ class MultiPage:
 
     def run(self):
         # # Drodown to select the page to run
-        # page = st.sidebar.selectbox(
-        #     'App Navigation',
-        #     self.pages,
-        #     format_func=lambda page: page['title']
-        # )
+        page = st.sidebar.selectbox(
+            'App Navigation',
+            self.pages,
+            format_func=lambda page: page['title']
+        )
+        st.write(page)
         import requests
 
-        link = "https://share.streamlit.io/vishwaspuriofficial/multi-page-streamlit-app/main/app.py?adding"
+        link = "https://share.streamlit.io/vishwaspuriofficial/multi-page-streamlit-app/main/app.py"
         data = requests.request("GET", link)
         url = data.url
         pageName = url.split("?")
         page = pageName[1]
         st.write(page)
+        st.session_state["page"] = page
 
         # run the app function
         page['function']()
