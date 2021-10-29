@@ -32,7 +32,7 @@ class MultiPage:
         # )
         import requests
 
-        link = "https://stackoverflow.com"
+        link = "https://share.streamlit.io/vishwaspuriofficial/multi-page-streamlit-app/main/app.py?adding"
         data = requests.request("GET", link)
         url = data.url
         st.write(url)
