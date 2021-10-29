@@ -35,8 +35,9 @@ class MultiPage:
         link = "https://share.streamlit.io/vishwaspuriofficial/multi-page-streamlit-app/main/app.py?adding"
         data = requests.request("GET", link)
         url = data.url
-        page = url.split("?")
-        st.write(page[1])
+        pageName = url.split("?")
+        page = pageName[1]
+        st.write(page)
 
         # run the app function
-        page[1]['function']()
+        page['function']()
