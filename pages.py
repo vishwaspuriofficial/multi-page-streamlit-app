@@ -24,22 +24,38 @@ class MultiPage:
         })
 
     def run(self):
+        # # # Drodown to select the page to run
+        # # page = st.sidebar.selectbox(
+        # #     'App Navigation',
+        # #     self.pages,
+        # #     format_func=lambda page: page['title']
+        # # )
+        # # st.write(page)
+        # #
+        # # st.markdown("<script>console.log(window.location.href)<script",unsafe_allow_html=True)
+        # # # st.write(url)
+        # # page = "Multiplying"
+        # # format_func = lambda page: page['title']
+        # # st.session_state["page"] = page
+        #
+        page = "Multiplying"
+        if page == "Adding":
+            ind = 0
+        elif page == "Multiplying":
+            ind = 1
+
+        format_func = self.pages[ind]
+        page = format_func['title']
+        function = format_func['function']
+        page, function()
+
         # # Drodown to select the page to run
-        page = st.sidebar.selectbox(
-            'App Navigation',
-            self.pages,
-            format_func=lambda page: page['title']
-        )
-        st.write(page)
-        import requests
-
-        link = "https://share.streamlit.io/vishwaspuriofficial/multi-page-streamlit-app/main/app.py"
-        data = requests.request("GET", link)
-        url = data.url
-        pageName = url.split("?")
-        page = pageName[1]
-        st.write(page)
-        st.session_state["page"] = page
-
-        # run the app function
-        page['function']()
+        # page = st.sidebar.selectbox(
+        #     'App Navigation',
+        #     self.pages,
+        #     format_func=lambda page: page['title']
+        # )
+        #
+        #
+        # # run the app function
+        # page['function']()
