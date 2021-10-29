@@ -24,45 +24,20 @@ class MultiPage:
         })
 
     def run(self):
-        # # # Drodown to select the page to run
-        # # page = st.sidebar.selectbox(
-        # #     'App Navigation',
-        # #     self.pages,
-        # #     format_func=lambda page: page['title']
-        # # )
-        # # st.write(page)
-        # #
-        # # st.markdown("<script>console.log(window.location.href)<script",unsafe_allow_html=True)
-        # # # st.write(url)
-        # # page = "Multiplying"
-        # # format_func = lambda page: page['title']
-        # # st.session_state["page"] = page
-        #
-        query_params = st.experimental_get_query_params()
-        # st.write(query_params)
-        # if query_params:
-        #     st.write()
-        page = query_params['page'][0]
-        ind = 0
-        if page == "add":
-            ind = 1
-        elif page == "multiply":
-            ind = 2
-        else:
+        try:
+            query_params = st.experimental_get_query_params()
+            page = query_params['page'][0]
+            ind = 0
+            if page == "add":
+                ind = 1
+            elif page == "multiply":
+                ind = 2
+            else:
+                ind = 0
+        except:
             ind = 0
 
         format_func = self.pages[ind]
         page = format_func['title']
         function = format_func['function']
         page, function()
-
-        # # Drodown to select the page to run
-        # page = st.sidebar.selectbox(
-        #     'App Navigation',
-        #     self.pages,
-        #     format_func=lambda page: page['title']
-        # )
-        #
-        #
-        # # run the app function
-        # page['function']()
