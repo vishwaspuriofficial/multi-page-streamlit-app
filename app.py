@@ -2,7 +2,7 @@ import streamlit as st
 
 # Custom imports
 from pages import MultiPage
-from pages import adding, multiplying
+from Pages import add, multiply
 
 # Create an instance of the app
 app = MultiPage()
@@ -11,8 +11,8 @@ app = MultiPage()
 st.title("Multi-page Application")
 
 # Add all your applications (pages) here
-app.add_page("Adding", adding.app)
-app.add_page("Multipying", multiplying.app)
+app.add_page("Adding", add.app)
+app.add_page("Multipying", multiply.app)
 
 # The main app
 app.run()
